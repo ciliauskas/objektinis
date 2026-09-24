@@ -6,6 +6,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 
 using namespace std;
 
@@ -77,3 +78,13 @@ int main() {
     return 0;
 }
 
+bool pagalV(Studentas a, Studentas b) { return a.vardas < b.vardas; }
+
+void ivestiStudentus(vector<Studentas> studentai) {
+    if (studentai.size() == 0) { cout << "nera duomenu. \n"; return; }
+    sort (studentai.begin(), studentai.end(), pagalV);
+    cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(20) << "Galutinis (vid.)" << setw(20) << "Galutinis (med.) \n" << string(70, '-') << "\n";
+    for (int i = 0; i < studentai.size(); i++) {
+        cout << left << setw(15) << studentai[i].vardas << setw(15) << studentai[i].pavarde <<fixed << setprecision(2) << setw(20) << studentai[i].gvidurkis << setw(20) << studentai[i].gmediana << "\n";
+    }
+}
