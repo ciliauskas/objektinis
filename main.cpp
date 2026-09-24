@@ -61,6 +61,18 @@ int main() {
             galutinis(s);
             studentai.push_back(s);
         }   
+
+        else if (pasirinkimai ==2) {
+    Studentas s;
+    cout << "vardas: "; cin >> s.vardas;
+    cout << "pavarde: "; cin >> s.pavarde;
+    int ndKiekis = rand() % 10 + 1;
+    for (int i = 0; i < ndKiekis; i++) s.nd.push_back(rand() % 10 + 1);
+    s.egzaminas = rand() % 10 + 1;
+    galutinis(s);
+    studentai.push_back(s);
+    cout << "sukurti atsitiktiniai duomenys. \n ";
+        }
     } while (pasirinkimai != 0);
     return 0;
 }
