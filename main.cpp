@@ -38,5 +38,30 @@ void galutinis(Studentas &s) {
 }
 
 int main() {
+    srand(time(NULL));
+    vector<Studentas> studentai;
+    int pasirinkimai;
+
+    do {
+        cout << "\n1 ivesti duomenis\n0. baigti\npasirinkite: ";
+        cin >> pasirinkimai;
+
+        if (pasirinkimai == 1) {
+            Studentas s;
+            cout << "vardas: "; cin >> s.vardas;
+            cout << "pavarde: "; cin >> s.pavarde;
+            char dar;
+            do {
+                int balas;
+                cout << "iveskite nd bala (0-10): "; cin >> balas;
+                s.nd.push_back(balas);
+                cout << "ar norite ivesti dar nd? (t/n): "; cin >> dar;
+            } while (dar == 't'|| dar == 'T');
+            cout << "egzamino balas: "; cin >> s.egzaminas;
+            galutinis(s);
+            studentai.push_back(s);
+        }   
+    } while (pasirinkimai != 0);
     return 0;
 }
+
