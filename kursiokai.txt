@@ -1,0 +1,5 @@
+Pavarde Vardas ND1 ND2 ND3 ND4 ND5 Egzaminas
+Jonaitis Jonas 8 9 10 6 10 9
+Andraitis Andrius 7 10 8 5 4 6
+Petraitis Petras 10 10 10 9 10 10
+Monikaite Monika 5 4 6 7 5 6
