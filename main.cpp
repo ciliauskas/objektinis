@@ -22,7 +22,10 @@ struct Studentas {
 double svidurkis(vector<int> v) {
     if (v.size() == 0) return 0.0;
     double suma = 0.0;
-    for (int i = 0; i < v.size(); i++) suma += v[i];
+    for (int i = 0; i < v.size(); i++) 
+    {
+        suma += v[i];
+    }
     return suma / v.size();
 }
 double smediana(vector<int> v) {
@@ -68,7 +71,10 @@ int main() {
     cout << "vardas: "; cin >> s.vardas;
     cout << "pavarde: "; cin >> s.pavarde;
     int ndKiekis = rand() % 10 + 1;
-    for (int i = 0; i < ndKiekis; i++) s.nd.push_back(rand() % 10 + 1);
+    for (int i = 0; i < ndKiekis; i++) 
+    {
+        s.nd.push_back(rand() % 10 + 1);
+    }
     s.egzaminas = rand() % 10 + 1;
     galutinis(s);
     studentai.push_back(s);
@@ -84,7 +90,37 @@ void ivestiStudentus(vector<Studentas> studentai) {
     if (studentai.size() == 0) { cout << "nera duomenu. \n"; return; }
     sort (studentai.begin(), studentai.end(), pagalV);
     cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(20) << "Galutinis (vid.)" << setw(20) << "Galutinis (med.) \n" << string(70, '-') << "\n";
-    for (int i = 0; i < studentai.size(); i++) {
+    for (int i = 0; i < studentai.size(); i++) 
+    {
         cout << left << setw(15) << studentai[i].vardas << setw(15) << studentai[i].pavarde <<fixed << setprecision(2) << setw(20) << studentai[i].gvidurkis << setw(20) << studentai[i].gmediana << "\n";
     }
+}
+
+void nfailas (string failas, vector<Studentas> studentai) {
+    ifstream in(failas);
+    if (!in.is_open()) {
+        cout << "nepavyko atidaryti failo. \n"; return;
+    }
+    string eilute;
+    getline(in, eilute);
+    while (getline(in, eilute)) {
+        if (eilute == "") continue;
+        stringstream ss(eilute);
+        Studentas s;
+        ss >> s.vardas >> s.pavarde;
+        int balas;
+        vector<int> lbalai;
+        while (ss >> balas) lbalai.push_back(balas);
+        if (lbalai.size() > 0) {
+            s.egzaminas = lbalai[lbalai.size() - 1];
+            lbalai.pop_back();
+            s.nd = lbalai;
+        } else {
+            galutinis(s);
+            studentai.push_back(s);
+        }
+    }
+    in.close();
+    cout << "duomenys nuskaityti is failo. \n";
+    
 }
