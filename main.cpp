@@ -88,7 +88,7 @@ int main() {
     int pasirinkimai;
 
     do {
-        cout << "\n1 ivesti duomenis\n0. baigti\npasirinkite: ";
+        cout << "\n1. ivesti duomenis\n2. atsitiktiniai duomenys\n3. nuskaityti is failo\n4. isvesti rezultatus\n0. baigti\npasirinkite: ";
         cin >> pasirinkimai;
 
         if (pasirinkimai == 1) {
