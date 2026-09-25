@@ -133,5 +133,5 @@ int main() {
             }
             
         } while (pasirinkimai != 0);
-            return 0;
+        return 0;
 }
